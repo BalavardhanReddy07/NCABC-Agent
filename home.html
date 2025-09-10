@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Carolina ABC Commission</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background-color: #1e3a5f;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-banner .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .top-banner .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-banner .right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-banner a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav li {
+            position: relative;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav a:hover {
+            color: #2c5aa0;
+        }
+
+        .dropdown-arrow {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #666;
+        }
+
+        /* ensure full-height layout */
+        html, body {
+            height: 100%;
+        }
+
+        /* Hero Section (updated) */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            height: 100vh;
+            background-image: url('NCABC.png');
+            background-size: cover;        /* keep aspect ratio and fill area */
+            background-repeat: no-repeat;
+            background-position: left center; /* anchor image to left so it doesn't shift right */
+            /* remove background-attachment: fixed to avoid parallax/shift */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Search Overlay */
+        .search-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(44, 90, 160, 0.8) 100%);
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 0;
+            margin-top: 30px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-button {
+            background-color: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 0 4px 4px 0;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #1e3a5f;
+        }
+
+        .popular-searches {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .popular-searches h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav {
+                gap: 20px;
+            }
+            
+            .nav a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-banner .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .top-banner .right {
+                justify-content: center;
+            }
+
+            .header .container {
+                height: auto;
+                padding: 15px 20px;
+            }
+
+            .nav {
+                display: none; /* Would need mobile menu implementation */
+            }
+
+            .search-overlay {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            .search-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-input {
+                border-radius: 4px;
+            }
+
+            .search-button {
+                border-radius: 4px;
+            }
+        }
+
+        /* ABC Logo Recreation */
+        .abc-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .abc-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .abc-letters {
+            font-size: 48px;
+            font-weight: bold;
+            color: #8B0000;
+            letter-spacing: 2px;
+            line-height: 0.8;
+        }
+
+        .abc-subtext {
+            font-size: 10px;
+            color: #333;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Additional styling for better visual match */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+            z-index: 1;
+        }
+
+        .search-overlay {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Globe icon for language selector */
+        .globe-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            background: url('C:\Users\BalavardhanReddy\OneDrive - Unique Comp Inc\Desktop\NCABC\NCABC.png') no-repeat center center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="left">
+                <span>An official website of the State of North Carolina</span>
+                <a href="#" style="margin-left: 10px; color: #4A90E2;">How you know ⌄</a>
+            </div>
+            <div class="right">
+                <a href="#">ABC Stores</a>
+                <a href="#">Announcements</a>
+                <a href="#">Contact Us</a>
+                <a href="#"><span class="globe-icon"></span>Select Language</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="abc-logo">
+                <div class="abc-text">
+                    <div class="abc-letters">ABC</div>
+                    <div class="abc-subtext">COMMISSION<br>NORTH CAROLINA</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav">
+                    <li><a href="#">About <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Boards & Stores <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Education <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Legal <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Permits & Audit <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Pricing <span class="dropdown-arrow"></span></a></li>
+                    <li><a href="#">Product <span class="dropdown-arrow"></span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero">
